@@ -23,6 +23,9 @@ public class Lambda_03_Test {
     // tag::forEach[]
     private void forEach(List<Person> source, PersonProcessor processor) {
        // TOD0
+    for(Person a:source){
+    	processor.process(a);
+    }
     }
     // end::forEach[]
 
@@ -33,10 +36,15 @@ public class Lambda_03_Test {
 
         List<Person> personList = Data.buildPersonList(100);
 
-        // TODO vérifier qu'une personne à un prénom qui commence par first
-        // TODO vérifier qu'une personne à un nom qui commence par last
-        // TODO vérifier qu'une personne à un age > 0
-        PersonProcessor verifyPerson = null;
+        // TODO vérifier qu'une personne a un prénom qui commence par first
+        // TODO vérifier qu'une personne a un nom qui commence par last
+        // TODO vérifier qu'une personne a un age > 0
+        
+        PersonProcessor verifyPerson = p -> {
+        	assertTrue(p.getFirstname().contains("first"));
+        	assertTrue(p.getLastname().contains("last"));
+        	assertTrue(p.getAge() > 0);
+        };
 
         assertThat(verifyPerson, notNullValue());
 
